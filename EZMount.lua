@@ -71,7 +71,7 @@ local function getMount(name)
 end
 
 local function getArmor(entity)
-    return entity.body_armor_item or entity.ArmorItems[3]
+    return (entity.equipment ~= nil and entity.equipment or entity.equipment[3] or entity.body_armor_item or entity.ArmorItems[3])
 end
 
 local textGuide = '§f\nlocal textureTable  = {\n    iron = textures["reference"],\n    diamond = textures["reference"],\n    golden = textures["reference"],\n    leather = textures["reference"]\n}\n'..
@@ -247,3 +247,4 @@ function mounts:newObjectMount(id,modelpart,passenger,anim)
 end
 
 return mounts
+
